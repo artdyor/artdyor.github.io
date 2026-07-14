@@ -203,6 +203,15 @@ a {
   max-width: 720px;
 }
 
+.hero-dyorcult {
+  background-image:
+    linear-gradient(180deg, rgba(11, 12, 14, 0.78) 0%, rgba(11, 12, 14, 0.94) 100%),
+    url('assets/dyorcult-hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 .eyebrow {
   font-size: 13px;
   font-weight: 500;
