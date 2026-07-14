@@ -243,6 +243,21 @@ a {
   backdrop-filter: blur(6px);
 }
 
+/* Force all body copy to white on this page for readability over the photo background. */
+.page-dyorcult .eyebrow,
+.page-dyorcult .hero p,
+.page-dyorcult .section-header p,
+.page-dyorcult .about-card p,
+.page-dyorcult .project-card p,
+.page-dyorcult .feature-list li,
+.page-dyorcult .contact-card p,
+.page-dyorcult .footer p,
+.page-dyorcult .footer-note,
+.page-dyorcult .nav-links a,
+.page-dyorcult .icon-link {
+  color: var(--color-quartz);
+}
+
 @supports (-webkit-touch-callout: none) {
   /* iOS Safari doesn't support fixed backgrounds well; fall back to a
      normal in-flow image so it still looks intentional. */
