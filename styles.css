@@ -258,10 +258,12 @@ a {
   color: var(--color-quartz);
 }
 
-@supports (-webkit-touch-callout: none) {
-  /* iOS Safari doesn't support fixed backgrounds well; fall back to a
-     normal in-flow image so it still looks intentional. */
-  .page-dyorcult::before {
+@media (max-width: 640px), (pointer: coarse) {
+  /* Mobile browsers resize the viewport as the address bar hides/shows
+     while scrolling, which makes a `fixed` background appear to zoom.
+     Use `absolute` here instead so it scrolls normally with the page. */
+  .page-dyorcult::before,
+  .page-dyorcult::after {
     position: absolute;
   }
 }
