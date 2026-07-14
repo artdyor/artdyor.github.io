@@ -203,19 +203,51 @@ a {
   max-width: 720px;
 }
 
-.hero-dyorcult {
-  background-image:
-    linear-gradient(180deg, rgba(11, 12, 14, 0.78) 0%, rgba(11, 12, 14, 0.94) 100%),
-    url('assets/dyorcult-hero-bg.jpg');
+/* Page-wide fixed background (used on DYORCULT page so the image stays
+   visible behind everything as the page scrolls, with content sections
+   semi-transparent on top of it). */
+.page-dyorcult::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('assets/dyorcult-hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  z-index: -2;
+}
+
+.page-dyorcult::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 12, 14, 0.6);
+  z-index: -1;
+}
+
+/* Let the fixed background show through the content sections on this page. */
+.page-dyorcult .hero,
+.page-dyorcult .section {
+  background: transparent;
+}
+
+.page-dyorcult .about-card,
+.page-dyorcult .project-card,
+.page-dyorcult .contact-card {
+  background: rgba(13, 23, 43, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.page-dyorcult .footer {
+  background: rgba(11, 12, 14, 0.55);
+  backdrop-filter: blur(6px);
 }
 
 @supports (-webkit-touch-callout: none) {
-  .hero-dyorcult {
-    background-attachment: scroll;
+  /* iOS Safari doesn't support fixed backgrounds well; fall back to a
+     normal in-flow image so it still looks intentional. */
+  .page-dyorcult::before {
+    position: absolute;
   }
 }
 
