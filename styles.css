@@ -203,61 +203,6 @@ a {
   max-width: 720px;
 }
 
-/* Hero banner background photo — scoped to just the header/hero area
-   instead of stretched across the whole scrolling page. The source image
-   is a short, wide wordmark banner and runs out of visual content (goes
-   flat black) if stretched to cover a multi-screen-tall page. Everything
-   below the hero uses the site's normal solid background instead. */
-.page-dyorcult .hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('assets/dyorcult-hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(3px) saturate(0.85);
-  transform: scale(1.03);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.page-dyorcult .hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(9, 10, 12, 0.78);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Force the hero's own copy to white so it reads over the photo. Sections
-   below sit on the plain solid background now, so they keep the site's
-   normal muted text hierarchy instead of being forced white too. */
-.page-dyorcult .hero .eyebrow,
-.page-dyorcult .hero p {
-  color: var(--color-quartz);
-}
-
-.hero-logo-banner {
-  margin: 0 auto 28px;
-  max-width: 620px;
-}
-
-.hero-logo-banner img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 20px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
-}
-
 .eyebrow {
   font-size: 13px;
   font-weight: 500;
