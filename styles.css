@@ -203,69 +203,46 @@ a {
   max-width: 720px;
 }
 
-/* Page-wide fixed background (used on DYORCULT page so the image stays
-   visible behind everything as the page scrolls, with content sections
-   semi-transparent on top of it). */
-.page-dyorcult::before {
+/* Hero banner background photo — scoped to just the header/hero area
+   instead of stretched across the whole scrolling page. The source image
+   is a short, wide wordmark banner and runs out of visual content (goes
+   flat black) if stretched to cover a multi-screen-tall page. Everything
+   below the hero uses the site's normal solid background instead. */
+.page-dyorcult .hero::before {
   content: '';
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('assets/dyorcult-hero-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: -2;
+  filter: blur(3px) saturate(0.85);
+  transform: scale(1.03);
+  pointer-events: none;
+  z-index: 0;
 }
 
-.page-dyorcult::after {
+.page-dyorcult .hero::after {
   content: '';
-  position: fixed;
-  inset: 0;
-  background: rgba(11, 12, 14, 0.6);
-  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(9, 10, 12, 0.78);
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* Let the fixed background show through the content sections on this page. */
-.page-dyorcult .hero,
-.page-dyorcult .section {
-  background: transparent;
-}
-
-.page-dyorcult .about-card,
-.page-dyorcult .project-card,
-.page-dyorcult .contact-card {
-  background: rgba(13, 23, 43, 0.72);
-  backdrop-filter: blur(6px);
-}
-
-.page-dyorcult .footer {
-  background: rgba(11, 12, 14, 0.55);
-  backdrop-filter: blur(6px);
-}
-
-/* Force all body copy to white on this page for readability over the photo background. */
-.page-dyorcult .eyebrow,
-.page-dyorcult .hero p,
-.page-dyorcult .section-header p,
-.page-dyorcult .about-card p,
-.page-dyorcult .project-card p,
-.page-dyorcult .feature-list li,
-.page-dyorcult .contact-card p,
-.page-dyorcult .footer p,
-.page-dyorcult .footer-note,
-.page-dyorcult .nav-links a,
-.page-dyorcult .icon-link {
+/* Force the hero's own copy to white so it reads over the photo. Sections
+   below sit on the plain solid background now, so they keep the site's
+   normal muted text hierarchy instead of being forced white too. */
+.page-dyorcult .hero .eyebrow,
+.page-dyorcult .hero p {
   color: var(--color-quartz);
-}
-
-@media (max-width: 640px), (pointer: coarse) {
-  /* Mobile browsers resize the viewport as the address bar hides/shows
-     while scrolling, which makes a `fixed` background appear to zoom.
-     Use `absolute` here instead so it scrolls normally with the page. */
-  .page-dyorcult::before,
-  .page-dyorcult::after {
-    position: absolute;
-  }
 }
 
 .hero-logo-banner {
