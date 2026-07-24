@@ -45,7 +45,7 @@
     <div class="container">
       <p class="eyebrow">Legal</p>
       <h1>Privacy Policy</h1>
-      <p class="legal-updated">Last updated: July 14, 2026</p>
+      <p class="legal-updated">Last updated: July 24, 2026</p>
     </div>
   </header>
 
@@ -70,22 +70,27 @@
         <h3>1.3 Order and Purchase Data</h3>
         <p>If you use DYORCULT's shop feature to purchase a gift card, we process the product selection, order amount, and an order token (a signed reference tied to your wallet address and the order, not to your identity) to create and track that order with our payment/fulfillment partner. Order tokens are generated using a server-side signing key and are not stored in a persistent order database on our end.</p>
 
-        <h3>1.4 Locally Stored Data</h3>
+        <h3>1.4 Live Chat</h3>
+        <p>When a live stream is active, DYORCULT offers an optional chat feature. If you choose to send a chat message, your <strong>public wallet address</strong> and, if you own one, your registered <strong>.skr domain name</strong> are shown alongside your message to everyone else viewing the same stream. Chat messages are held only in server memory for the duration of the live stream and are permanently deleted — not archived, not written to any database — as soon as the stream ends. Sending a chat message requires a one-time wallet signature to prove you control the address you are chatting as; this signature cannot move funds or authorize any transaction.</p>
+        <p>Chat includes a report feature (available to any participant) and a mute feature (available to the streamer), so that abusive or unwanted messages can be flagged and blocked. Reports are also held only in server memory and are cleared when the stream ends.</p>
+
+        <h3>1.5 Locally Stored Data</h3>
         <p>DYORCULT stores a small amount of data locally on your device, associated with your connected wallet address:</p>
         <ul>
           <li>A profile picture you optionally choose, if you use the profile photo feature (via your device's photo library).</li>
         </ul>
         <p>This data stays on your device. It is not transmitted to or stored on our servers.</p>
 
-        <h3>1.5 Device Permissions</h3>
+        <h3>1.6 Device Permissions and Clipboard Access</h3>
         <p>DYORCULT may request the following device permissions. Each is used strictly for the purpose described, and none result in data being sent to our servers:</p>
         <ul>
           <li><strong>Photo library access</strong> — to let you choose a profile picture from your device.</li>
           <li><strong>Biometric / fingerprint authentication (Face ID, fingerprint)</strong> — to let you lock and unlock the app on your own device. This is handled entirely by your device's operating system; DYORCULT never receives your biometric data.</li>
           <li><strong>Storage access</strong> — to read the image you select as a profile picture.</li>
         </ul>
+        <p>While the in-app checkout screen is open, DYORCULT also reads your device's clipboard to detect and auto-fill a Solana payment address or amount you've copied from Bitrefill's checkout, so you don't have to paste it manually. This clipboard content is read locally on your device only, used solely to populate that screen's input fields, and is never transmitted to our servers or any third party.</p>
 
-        <h3>1.6 Information We Do Not Collect</h3>
+        <h3>1.7 Information We Do Not Collect</h3>
         <p>We do not collect your name, email address, phone number, physical address, government ID, or any other personally identifying information, unless you voluntarily provide it to us directly (for example, by emailing our support address). We do not use analytics SDKs, crash-reporting SDKs, or advertising trackers in the App.</p>
 
         <h2>2. Third-Party Services</h2>
@@ -111,7 +116,7 @@
         <p>We do not sell, rent, or share your information with third parties for advertising or marketing purposes.</p>
 
         <h2>4. Data Retention</h2>
-        <p>We do not maintain a persistent database of your orders or wallet activity. Order verification tokens are stateless and self-contained (cryptographically signed, not stored), and expire naturally. Locally stored data (like your profile picture) remains on your device until you delete it or uninstall the App.</p>
+        <p>We do not maintain a persistent database of your orders or wallet activity. Order verification tokens are stateless and self-contained (cryptographically signed, not stored), and expire naturally. Live chat messages and reports exist only in server memory for the duration of a live stream and are permanently deleted the moment that stream ends — no chat history is ever stored beyond that. Locally stored data (like your profile picture) remains on your device until you delete it or uninstall the App.</p>
 
         <h2>5. Security</h2>
         <p>DYORCULT is built so that sensitive credentials — your private key and seed phrase — never leave your device or your wallet app. Server-side secrets (API keys, signing keys) are stored server-side and are never bundled into or accessible from the App itself. That said, no method of transmission or storage is 100% secure, and we cannot guarantee absolute security.</p>
