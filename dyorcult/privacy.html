@@ -41,7 +41,7 @@
 </head>
 <body>
     <h1>DYORCULT Privacy Policy</h1>
-    <p class="last-updated"><strong>Last Updated:</strong> August 23, 2026</p>
+    <p class="last-updated"><strong>Last Updated:</strong> August 24, 2026</p>
 
     <h2>Overview</h2>
     <p>DYORCULT is a non-custodial mobile app for Solana. The developer never accesses private keys, seed phrases, or funds. Users approve and sign all transactions directly in their wallet app. The backend only sees public wallet addresses.</p>
@@ -52,10 +52,10 @@
     <p>The app connects via Mobile Wallet Adapter and receives only the public wallet address. Private keys, seed phrases, and wallet credentials are never requested, transmitted, or stored.</p>
 
     <h3>Transaction Signatures</h3>
-    <p>The server may request a message signature from the wallet to verify ownership (for example, when using the shop). These signatures only prove control of an address and cannot move funds or execute transactions.</p>
+    <p>The server may request a message signature from the wallet to verify ownership (for example, when minting an NFT). These signatures only prove control of an address and cannot move funds or execute transactions.</p>
 
-    <h3>Order and Purchase Data</h3>
-    <p>When purchasing gift cards through the shop, the app processes product selection, order amount, and an order token (signed reference tied to wallet address). Order tokens are generated server-side and stored in Supabase database to track purchase history.</p>
+    <h3>NFT Minting Data</h3>
+    <p>When a user mints an NFT, the app uploads the chosen photo and its metadata (name, description) to the server, which stores them permanently on Arweave via Irys and records the resulting mint address in a Supabase database so the app can display the user's minted NFTs. The cost of storage and the Solana network fee are paid by the user in SKR, swapped to SOL as part of the same signed transaction.</p>
 
     <h3>Tipping Feature</h3>
     <p>Users can send SKR token tips directly to the creator's wallet address. Tips are blockchain transactions that users sign and send through their own wallet. The app facilitates the transaction but does not custody, control, or have access to the funds. All tips are staked automatically by the recipient.</p>
@@ -63,7 +63,8 @@
     <h3>Device Permissions</h3>
     <p>The app only requires:</p>
     <ul>
-        <li><strong>Internet access:</strong> Required for blockchain transactions, API communication with Bitrefill for gift card purchases, and Solana network connectivity.</li>
+        <li><strong>Internet access:</strong> Required for blockchain transactions, NFT media uploads, and Solana network connectivity.</li>
+        <li><strong>Photo library access:</strong> Required to select a photo to mint as an NFT.</li>
     </ul>
 
     <h3>Information Not Collected</h3>
@@ -71,22 +72,21 @@
 
     <h2>Third-Party Services</h2>
 
-    <h3>Bitrefill</h3>
-    <p>The shop embeds Bitrefill's website in a browser view, subject to Bitrefill's (Airfill AB) privacy policy. The backend communicates with Bitrefill's API to create and check orders.</p>
-
     <h3>Jupiter</h3>
     <p>Token swap quotes and execution communicate directly with Jupiter's API from the device, sending public wallet address and swap parameters. Users approve and sign transactions themselves.</p>
 
     <h3>Helius (Solana RPC)</h3>
     <p>On-chain data is read through a server-side proxy that forwards allow-listed read-only requests to Helius, protecting API credentials from exposure.</p>
-    
+
+    <h3>Irys / Arweave</h3>
+    <p>Photos and metadata for minted NFTs are uploaded to permanent Arweave storage via Irys, paid for by a wallet the developer funds and controls solely for this purpose. Uploaded content is public and permanent by the nature of Arweave storage.</p>
+
     <h2>Use of Information</h2>
     <p>Information is used only to:</p>
     <ul>
         <li>Verify wallet ownership for user-initiated actions</li>
-        <li>Create, process, and fulfill gift card orders</li>
-        <li>Display on-chain balances and transaction previews</li>
-        <li>Store purchase history for user reference</li>
+        <li>Upload and permanently store NFT media and metadata on the user's behalf</li>
+        <li>Display on-chain balances, transaction previews, and minted NFTs</li>
         <li>Facilitate SKR tips to the creator's wallet</li>
         <li>Respond to direct support requests</li>
     </ul>
@@ -101,7 +101,7 @@
     <h2>User Choices</h2>
     <ul>
         <li>Disconnect wallet at any time</li>
-        <li>Stop using shop or tipping features at any time; no account required</li>
+        <li>Stop using minting or tipping features at any time; no account required</li>
         <li>All transactions are user-initiated and require explicit wallet approval</li>
     </ul>
 
