@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#667eea">
     <title>DyorCult - Connect Wallet</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>">
     <style>
         * {
             margin: 0;
@@ -13,27 +12,14 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #667eea;
-            --primary-dark: #5568d3;
-            --secondary: #764ba2;
-            --success: #10b981;
-            --error: #ef4444;
-            --warning: #f59e0b;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f9fafb;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -42,19 +28,7 @@
             padding: 48px 32px;
             max-width: 440px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
-            animation: slideUp 0.4s ease-out;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
         }
 
         .logo {
@@ -64,20 +38,18 @@
         }
 
         h1 {
-            color: var(--text);
+            color: #1f2937;
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 8px;
             text-align: center;
-            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: var(--text-light);
+            color: #6b7280;
             text-align: center;
             margin-bottom: 32px;
             font-size: 15px;
-            line-height: 1.5;
         }
 
         .status {
@@ -87,10 +59,6 @@
             text-align: center;
             font-size: 14px;
             font-weight: 500;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
         .status.info {
@@ -111,16 +79,10 @@
             border: 1px solid #fecaca;
         }
 
-        .status.warning {
-            background: #fffbeb;
-            color: #92400e;
-            border: 1px solid #fde68a;
-        }
-
         button {
             width: 100%;
             padding: 16px 24px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -129,24 +91,6 @@
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        button:hover:not(:disabled)::before {
-            opacity: 1;
         }
 
         button:hover:not(:disabled) {
@@ -154,29 +98,21 @@
             box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
         }
 
-        button:active:not(:disabled) {
-            transform: translateY(0);
-        }
-
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
 
         button.secondary {
-            background: var(--success);
+            background: #10b981;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        button.secondary:hover:not(:disabled) {
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+            margin-top: 12px;
         }
 
         .wallet-info {
             display: none;
             padding: 24px;
-            background: var(--bg);
+            background: #f9fafb;
             border-radius: 12px;
             margin-top: 24px;
             border: 1px solid #e5e7eb;
@@ -184,34 +120,25 @@
 
         .wallet-info.show {
             display: block;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
 
         .wallet-label {
             font-size: 13px;
             font-weight: 600;
-            color: var(--text-light);
+            color: #6b7280;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .pubkey {
-            font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+            font-family: 'SF Mono', Monaco, monospace;
             font-size: 13px;
             word-break: break-all;
             padding: 12px;
             background: white;
             border-radius: 8px;
-            margin-top: 8px;
-            color: var(--text);
+            color: #1f2937;
             border: 1px solid #e5e7eb;
-            line-height: 1.6;
         }
 
         .spinner {
@@ -222,6 +149,7 @@
             border-top: 2px solid white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
+            margin-right: 8px;
         }
 
         @keyframes spin {
@@ -239,22 +167,7 @@
             background: rgba(102, 126, 234, 0.05);
             border-radius: 8px;
             font-size: 13px;
-            color: var(--text-light);
-        }
-
-        .security-badge::before {
-            content: '🔒';
-            font-size: 16px;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 40px 24px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
+            color: #6b7280;
         }
     </style>
 </head>
@@ -262,17 +175,17 @@
     <div class="container">
         <div class="logo">🎮</div>
         <h1>DyorCult</h1>
-        <p class="subtitle">Securely connect your Solana wallet to unlock exclusive in-game features</p>
+        <p class="subtitle">Connect your Seeker wallet to unlock exclusive in-game features</p>
 
         <div id="status" class="status info">
             <span>Ready to connect</span>
         </div>
 
         <button id="connectBtn" onclick="connectWallet()">
-            <span id="btnText">Connect Wallet</span>
+            <span id="btnText">Connect Seeker Wallet</span>
         </button>
 
-        <button id="returnBtn" onclick="returnToGame()" class="secondary" style="display:none; margin-top:12px;">
+        <button id="returnBtn" onclick="returnToGame()" class="secondary" style="display:none;">
             <span>Return to Game →</span>
         </button>
 
@@ -282,11 +195,9 @@
         </div>
 
         <div class="security-badge">
-            Secured connection via Solana Mobile Wallet Adapter
+            🔒 Secured via Solana Mobile Wallet Adapter
         </div>
     </div>
-
-    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
 
     <script>
         const CONFIG = {
@@ -294,20 +205,17 @@
             SESSION_KEY: 'dyorcult_session',
             WALLET_KEY: 'dyorcult_wallet_pubkey',
             TIMESTAMP_KEY: 'dyorcult_wallet_timestamp',
-            SESSION_DURATION: 24 * 60 * 60 * 1000 // 24 hours
+            SESSION_DURATION: 24 * 60 * 60 * 1000
         };
 
         let walletPublicKey = null;
-        let walletProvider = null;
 
-        // Generate session token for security
         function generateSessionToken() {
             const array = new Uint8Array(32);
             crypto.getRandomValues(array);
             return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
         }
 
-        // Get or create session token
         function getSessionToken() {
             let session = localStorage.getItem(CONFIG.SESSION_KEY);
             if (!session) {
@@ -317,41 +225,16 @@
             return session;
         }
 
-        // Detect available Solana wallet
-        function detectWallet() {
-            // Check for browser extension wallets
-            if (window.solana) {
-                if (window.solana.isPhantom) return { provider: window.solana, name: 'Phantom' };
-                if (window.solana.isSolflare) return { provider: window.solana, name: 'Solflare' };
-                return { provider: window.solana, name: 'Solana Wallet' };
-            }
-
-            // Check for mobile app wallets
-            if (window.phantom?.solana) {
-                return { provider: window.phantom.solana, name: 'Phantom' };
-            }
-
-            if (window.solflare) {
-                return { provider: window.solflare, name: 'Solflare' };
-            }
-
-            return null;
-        }
-
-        // Update UI status
-        function setStatus(message, type = 'info', showSpinner = false) {
+        function setStatus(message, type = 'info') {
             const status = document.getElementById('status');
             status.className = `status ${type}`;
-            status.innerHTML = showSpinner
-                ? `<span class="spinner"></span><span>${message}</span>`
-                : `<span>${message}</span>`;
+            status.innerHTML = `<span>${message}</span>`;
         }
 
-        // Update button text
         function setButtonText(text, showSpinner = false) {
             const btnText = document.getElementById('btnText');
             btnText.innerHTML = showSpinner
-                ? `<span class="spinner"></span> ${text}`
+                ? `<span class="spinner"></span>${text}`
                 : text;
         }
 
@@ -360,76 +243,36 @@
 
             try {
                 btn.disabled = true;
-                setButtonText('Connecting...', true);
-                setStatus('Opening Seeker Wallet...', 'info', true);
+                setButtonText('Opening wallet...', true);
+                setStatus('Launching Seeker wallet...', 'info');
 
-                // On mobile, always use Mobile Wallet Adapter first for Seeker native wallet
-                const isMobile = /android|iphone|ipad/i.test(navigator.userAgent);
-
-                if (isMobile) {
-                    // Use Solana Mobile Wallet Adapter protocol for Seeker
-                    const session = getSessionToken();
-
-                    // Create proper MWA deep link
-                    const appIdentity = {
-                        name: 'DyorCult',
-                        uri: window.location.origin,
-                        icon: window.location.origin + '/icon.png'
-                    };
-
-                    // Use solana-wallet:// scheme to open Seeker's native wallet
-                    const mwaUrl = `solana-wallet://v1/associate/local`;
-
-                    console.log('[DyorCult] Opening Mobile Wallet Adapter:', mwaUrl);
-                    setStatus('Opening Seeker Wallet...', 'info', true);
-
-                    // Try to open the native wallet
-                    window.location.href = mwaUrl;
-
-                    // Give wallet time to open and user time to authorize
-                    setTimeout(() => {
-                        // If still on this page after 5 seconds, wallet might not be installed
-                        setStatus('Waiting for wallet authorization...', 'warning');
-                        setButtonText('Waiting...');
-                    }, 2000);
-
-                    return;
-                }
-
-                // Desktop: try browser extension wallets
-                const wallet = detectWallet();
-
-                if (!wallet) {
-                    throw new Error('No Solana wallet detected. Please install Phantom or Solflare browser extension.');
-                }
-
-                walletProvider = wallet.provider;
-                setStatus(`Connecting to ${wallet.name}...`, 'info', true);
-
-                // Request wallet connection
-                const response = await walletProvider.connect();
-                walletPublicKey = response.publicKey.toString();
-
-                // Store wallet info securely
                 const session = getSessionToken();
-                const timestamp = Date.now();
 
-                localStorage.setItem(CONFIG.WALLET_KEY, walletPublicKey);
-                localStorage.setItem(CONFIG.TIMESTAMP_KEY, timestamp.toString());
+                // Build the callback URL that includes our session
+                const callbackUrl = window.location.href.split('?')[0] + '?session=' + session;
 
-                // Show success
-                setStatus(`✅ Connected to ${wallet.name}`, 'success');
-                document.getElementById('pubkey').textContent = walletPublicKey;
-                document.getElementById('walletInfo').classList.add('show');
-                document.getElementById('connectBtn').style.display = 'none';
-                document.getElementById('returnBtn').style.display = 'block';
+                // Create app identity for Mobile Wallet Adapter
+                const appIdentity = {
+                    name: 'DyorCult',
+                    uri: window.location.origin,
+                    icon: window.location.origin + '/icon.png'
+                };
 
-                console.log('[DyorCult] Wallet connected:', walletPublicKey);
+                // Encode parameters
+                const encodedIdentity = encodeURIComponent(JSON.stringify(appIdentity));
+                const encodedCallback = encodeURIComponent(callbackUrl);
 
-                // Auto-return to game after 2 seconds
-                setTimeout(() => {
-                    returnToGame();
-                }, 2000);
+                // Use the correct MWA protocol
+                // Format: solana-wallet://v1/associate/local?app_identity={...}&callback={...}
+                const mwaUrl = `solana-wallet://v1/associate/local?app_identity=${encodedIdentity}&callback=${encodedCallback}`;
+
+                console.log('[DyorCult] MWA URL:', mwaUrl);
+                console.log('[DyorCult] Callback URL:', callbackUrl);
+
+                // Open the native Seeker wallet
+                window.location.href = mwaUrl;
+
+                // Note: User will be redirected, so button state doesn't matter
 
             } catch (err) {
                 console.error('[DyorCult] Connection error:', err);
@@ -445,47 +288,49 @@
                 return;
             }
 
-            setStatus('Returning to game...', 'info', true);
+            setStatus('Returning to game...', 'info');
 
             const session = getSessionToken();
             const deepLink = `${CONFIG.DEEP_LINK_SCHEME}://wallet-connected?pubkey=${encodeURIComponent(walletPublicKey)}&session=${encodeURIComponent(session)}&timestamp=${Date.now()}`;
 
             console.log('[DyorCult] Returning to game:', deepLink);
-
-            // Try to open the game via deep link
             window.location.href = deepLink;
 
-            // Fallback message
             setTimeout(() => {
-                setStatus('Please open the DyorCult app to continue', 'warning');
+                setStatus('Please open the DyorCult app to continue', 'info');
             }, 1500);
         }
 
-        // Handle page load
+        // Handle page load - check for wallet connection callback
         window.addEventListener('load', () => {
             const urlParams = new URLSearchParams(window.location.search);
 
-            // Check if returning from MWA with public key
-            if (urlParams.has('public_key') || urlParams.has('pubkey')) {
-                walletPublicKey = urlParams.get('public_key') || urlParams.get('pubkey');
+            // Check if we're returning from MWA with authorization
+            if (urlParams.has('phantom_encryption_public_key') || urlParams.has('solana_public_key') || urlParams.has('public_key')) {
+                // MWA returned with authorization
+                walletPublicKey = urlParams.get('solana_public_key') || urlParams.get('public_key') || urlParams.get('phantom_encryption_public_key');
 
-                const session = getSessionToken();
-                const timestamp = Date.now();
+                if (walletPublicKey) {
+                    const session = getSessionToken();
+                    const timestamp = Date.now();
 
-                localStorage.setItem(CONFIG.WALLET_KEY, walletPublicKey);
-                localStorage.setItem(CONFIG.TIMESTAMP_KEY, timestamp.toString());
+                    localStorage.setItem(CONFIG.WALLET_KEY, walletPublicKey);
+                    localStorage.setItem(CONFIG.TIMESTAMP_KEY, timestamp.toString());
 
-                setStatus('✅ Wallet connected successfully!', 'success');
-                document.getElementById('pubkey').textContent = walletPublicKey;
-                document.getElementById('walletInfo').classList.add('show');
-                document.getElementById('connectBtn').style.display = 'none';
-                document.getElementById('returnBtn').style.display = 'block';
+                    setStatus('✅ Wallet connected successfully!', 'success');
+                    document.getElementById('pubkey').textContent = walletPublicKey;
+                    document.getElementById('walletInfo').classList.add('show');
+                    document.getElementById('connectBtn').style.display = 'none';
+                    document.getElementById('returnBtn').style.display = 'block';
 
-                // Auto-return to game
-                setTimeout(() => {
-                    returnToGame();
-                }, 1500);
-                return;
+                    console.log('[DyorCult] Wallet connected:', walletPublicKey);
+
+                    // Auto-return to game after 2 seconds
+                    setTimeout(() => {
+                        returnToGame();
+                    }, 2000);
+                    return;
+                }
             }
 
             // Check for existing valid session
@@ -502,16 +347,6 @@
                 document.getElementById('returnBtn').style.display = 'block';
             }
         });
-
-        // Listen for wallet disconnection
-        if (window.solana) {
-            window.solana.on('disconnect', () => {
-                console.log('[DyorCult] Wallet disconnected');
-                localStorage.removeItem(CONFIG.WALLET_KEY);
-                localStorage.removeItem(CONFIG.TIMESTAMP_KEY);
-                walletPublicKey = null;
-            });
-        }
     </script>
 </body>
 </html>
