@@ -361,39 +361,45 @@
             try {
                 btn.disabled = true;
                 setButtonText('Connecting...', true);
-                setStatus('Opening wallet...', 'info', true);
+                setStatus('Opening Seeker Wallet...', 'info', true);
 
+                // On mobile, always use Mobile Wallet Adapter first for Seeker native wallet
+                const isMobile = /android|iphone|ipad/i.test(navigator.userAgent);
+
+                if (isMobile) {
+                    // Use Solana Mobile Wallet Adapter protocol for Seeker
+                    const session = getSessionToken();
+
+                    // Create proper MWA deep link
+                    const appIdentity = {
+                        name: 'DyorCult',
+                        uri: window.location.origin,
+                        icon: window.location.origin + '/icon.png'
+                    };
+
+                    // Use solana-wallet:// scheme to open Seeker's native wallet
+                    const mwaUrl = `solana-wallet://v1/associate/local`;
+
+                    console.log('[DyorCult] Opening Mobile Wallet Adapter:', mwaUrl);
+                    setStatus('Opening Seeker Wallet...', 'info', true);
+
+                    // Try to open the native wallet
+                    window.location.href = mwaUrl;
+
+                    // Give wallet time to open and user time to authorize
+                    setTimeout(() => {
+                        // If still on this page after 5 seconds, wallet might not be installed
+                        setStatus('Waiting for wallet authorization...', 'warning');
+                        setButtonText('Waiting...');
+                    }, 2000);
+
+                    return;
+                }
+
+                // Desktop: try browser extension wallets
                 const wallet = detectWallet();
 
                 if (!wallet) {
-                    // No wallet detected - try Mobile Wallet Adapter
-                    const isMobile = /android|iphone|ipad/i.test(navigator.userAgent);
-
-                    if (isMobile) {
-                        setStatus('Redirecting to wallet app...', 'info', true);
-
-                        // Use Solana Mobile Wallet Adapter protocol
-                        const session = getSessionToken();
-                        const callbackUrl = encodeURIComponent(window.location.href + '?session=' + session);
-                        const appIdentity = encodeURIComponent(JSON.stringify({
-                            name: 'DyorCult',
-                            uri: 'https://dyorcult.app',
-                            icon: 'https://dyorcult.app/icon.png'
-                        }));
-
-                        const mwaUrl = `solana-wallet://v1/associate/local?app_identity=${appIdentity}&callback=${callbackUrl}`;
-
-                        window.location.href = mwaUrl;
-
-                        setTimeout(() => {
-                            setStatus('No wallet app found. Please install Phantom, Solflare, or Seeker wallet.', 'error');
-                            btn.disabled = false;
-                            setButtonText('Try Again');
-                        }, 3000);
-
-                        return;
-                    }
-
                     throw new Error('No Solana wallet detected. Please install Phantom or Solflare browser extension.');
                 }
 
