@@ -1,12 +1,12 @@
 [
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.artdyor.dyorcultGame",
-      "sha256_cert_fingerprints": [
-        "af7b4c3ec073e64807f58fe294689b72ec955c6e313ef03fdfeefd1dc60cfd56"
-      ]
+    {
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.artdyor.dyorcultGame",
+        "sha256_cert_fingerprints": [
+          "af7b4c3ec073e64807f58fe294689b72ec955c6e313ef03fdfeefd1dc60cfd56"
+        ]
+      }
     }
-  }
-]
+  ]
