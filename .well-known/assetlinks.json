@@ -1,11 +1,11 @@
-[
+  [
     {
       "relation": ["delegate_permission/common.handle_all_urls"],
       "target": {
         "namespace": "android_app",
         "package_name": "com.artdyor.dyorcultGame",
         "sha256_cert_fingerprints": [
-          "af7b4c3ec073e64807f58fe294689b72ec955c6e313ef03fdfeefd1dc60cfd56"
+          "AF:7B:4C:3E:C0:73:E6:48:07:F5:8F:E2:94:68:9B:72:EC:95:5C:6E:31:3E:F0:3F:DF:EE:FD:1D:C6:0C:FD:56"
         ]
       }
     }
